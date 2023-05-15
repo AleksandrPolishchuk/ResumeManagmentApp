@@ -34,5 +34,23 @@ namespace backend.Controllers
 
 			return Ok("Job Created Successfully");
 		}
+
+		// Read
+		[HttpGet]
+		[Route("Get")]
+		public async Task<ActionResult<IEnumerable<JobGetDto>>> GetJobs()
+		{
+			var jobs = _context.Jobs.ToListAsync();
+			var convertedJobs = _mapper.Map<JobGetDto>(jobs);
+
+			return Ok(convertedJobs);
+
+		}
+
+		// Read (Get Job By ID)
+
+		// Update
+
+		// Delete
 	}
 }
