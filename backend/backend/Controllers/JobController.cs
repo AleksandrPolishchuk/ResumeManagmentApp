@@ -40,8 +40,8 @@ namespace backend.Controllers
 		[Route("Get")]
 		public async Task<ActionResult<IEnumerable<JobGetDto>>> GetJobs()
 		{
-			var jobs = _context.Jobs.ToListAsync();
-			var convertedJobs = _mapper.Map<JobGetDto>(jobs);
+			var jobs = await _context.Jobs.Include(job => job.Company).ToListAsync();
+			var convertedJobs = _mapper.Map<IEnumerable<JobGetDto>>(jobs);
 
 			return Ok(convertedJobs);
 
