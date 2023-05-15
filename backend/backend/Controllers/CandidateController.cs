@@ -30,7 +30,7 @@ namespace backend.Controllers
 			// Firt => Save pdf to Server
 			// Then => save url into our entity
 			var fiveMegaByte = 5 * 1024 * 1024;
-			var pdfMimeType = "application/json";
+			var pdfMimeType = "application/pdf";
 
 			if (pdfFile.Length > fiveMegaByte || pdfFile.ContentType != pdfMimeType)
 			{
