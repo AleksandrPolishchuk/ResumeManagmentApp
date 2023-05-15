@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using backend.Core.Context;
 using backend.Core.Dtos.Candidate;
+using backend.Core.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -38,6 +39,16 @@ namespace backend.Controllers
 
 			var resumeUrl = Guid.NewGuid().ToString() + ".pdf";
 			var filePath = Path.Combine(Directory.GetCurrentDirectory(), "documents", "pdfs", resumeUrl);
+			using (var stream = new FileStream(filePath, FileMode.Create))
+			{
+				await pdfFile.CopyToAsync(stream);
+			}
+			var newCandidate = _mapper.Map<Candidate>(dto);
+			newCandidate.ResumeUrl = resumeUrl;
+			await _context.Candidates.AddAsync(newCandidate);
+			await _context.SaveChangesAsync();
+
+			return Ok("Candidate Saved Successfully");
 		}
 
 		// Read
