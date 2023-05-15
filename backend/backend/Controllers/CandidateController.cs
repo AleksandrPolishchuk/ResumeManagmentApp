@@ -63,10 +63,27 @@ namespace backend.Controllers
 			return Ok(convertedCandidates);
 		}
 
-			// Read (Get Job By ID)
+		// Read (Download Pdf File)
+		[HttpGet]
+		[Route("download/{url}")]
+		public IActionResult DownloadPdfFile(string url)
+		{
+			var filePath = Path.Combine(Directory.GetCurrentDirectory(), "documents", "pdfs", url);
 
-			// Update
+			if (!System.IO.File.Exists(filePath))
+			{
+				return NotFound("File Not Found");
+			}
 
-			// Delete
+			var pdfBytes = System.IO.File.ReadAllBytes(filePath);
+			var file = File(pdfBytes, "application/pdf", url);
+			return file;
 		}
+
+		// Read (Get Job By ID)
+
+		// Update
+
+		// Delete
+	}
 }
