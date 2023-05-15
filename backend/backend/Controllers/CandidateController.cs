@@ -4,6 +4,7 @@ using backend.Core.Dtos.Candidate;
 using backend.Core.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace backend.Controllers
 {
@@ -52,11 +53,20 @@ namespace backend.Controllers
 		}
 
 		// Read
+		[HttpGet]
+		[Route("Get")]
+		public async Task<ActionResult<IEnumerable<CandidateGetDto>>> GetCandidates()
+		{
+			var candidates = await _context.Candidates.Include(c => c.Job).OrderByDescending(q => q.CreatedAt).ToListAsync();
+			var convertedCandidates = _mapper.Map<IEnumerable<CandidateGetDto>>(candidates);
 
-		// Read (Get Job By ID)
+			return Ok(convertedCandidates);
+		}
 
-		// Update
+			// Read (Get Job By ID)
 
-		// Delete
-	}
+			// Update
+
+			// Delete
+		}
 }
