@@ -29,3 +29,13 @@ ul {
   @include d-flex(column, flex-start, center);
   gap: 2rem;
 }
+.app {
+  color: var(--text-color1);
+  background-color: var(--bg-color);
+
+  &.dark {
+    --bg-color: #000;
+    --text-color1: #fff;
+    --text-color2: #999;
+  }
+}
