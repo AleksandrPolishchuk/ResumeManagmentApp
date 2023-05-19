@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import "./navbar.scss";
 import { Link } from "react-router-dom";
 import { Menu, LightMode, DarkMode } from "@mui/icons-material";
@@ -13,23 +13,31 @@ const links = [
 ];
 
 const Navbar = () => {
+  const [open, setOpen] = useState<boolean>(false);
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
+
+  const ToggleOpenMenu = () => {
+    setOpen((prevState) => !prevState);
+  };
+
+  const menuStyles = open ? "menu open" : "menu";
+
   return (
     <div className="navbar">
       <div className="brand">
         <span>Resume Managment</span>
       </div>
-      <div className="menu">
+      <div className={menuStyles}>
         <ul>
           {links.map((item) => (
-            <li key={item.href}>
+            <li key={item.href} onClick={ToggleOpenMenu}>
               <Link to={item.href}>{item.label}</Link>
             </li>
           ))}
         </ul>
       </div>
       <div className="hamburger">
-        <Menu />
+        <Menu onClick={ToggleOpenMenu} />
       </div>
       <div className="toggle">
         <ToggleButton

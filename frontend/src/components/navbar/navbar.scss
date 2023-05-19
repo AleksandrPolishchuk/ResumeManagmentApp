@@ -52,9 +52,13 @@
       height: 100vh;
       position: fixed;
       top: 0;
-      left: 0;
+      left: -240px;
       z-index: 100;
       transition: all 0.3s ease-in-out;
+
+      &.open {
+        left: 0;
+      }
       ul {
         @include d-flex(column, center, center);
         gap: 2rem;
