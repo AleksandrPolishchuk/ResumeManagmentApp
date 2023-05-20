@@ -22,7 +22,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/companies">
-              <Route index element={<Companies />}
+              <Route index element={<Companies />} />
             </Route>
           </Routes>
         </Suspense>
