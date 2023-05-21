@@ -16,7 +16,7 @@ const AddCompany = () => {
           label="Company Name"
           variant="outlined"
           value={company.name}
-          onChange={e => setCompany(...company, name: e.target.value)}
+          onChange={(e) => setCompany({ ...company, name: e.target.value })}
         />
       </div>
     </div>
