@@ -9,6 +9,7 @@ import {
   TextField,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import httpModule from "../../helpers/http.module";
 
 const AddCompany = () => {
   const [company, setCompany] = useState<ICreateCompanyDto>({
@@ -18,7 +19,16 @@ const AddCompany = () => {
 
   const redirect = useNavigate();
 
-  const handleClickSaveBtn = () => {};
+  const handleClickSaveBtn = () => {
+    if (company.name === "" || company.size === "") {
+      alert("Fill all fields");
+      return;
+    }
+    httpModule
+      .post("/Company/Create", company)
+      .then((response) => redirect("/companies"))
+      .catch((error) => console.log(error));
+  };
   const handleClickBackBtn = () => {
     redirect("/companies");
   };
