@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import httpModule from "../../helpers/http.module";
+import "./companies.scss";
 
 const AddCompany = () => {
   const [company, setCompany] = useState<ICreateCompanyDto>({
