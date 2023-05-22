@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import httpModule from "../../helpers/http.module";
-import "./companies.scss";
+import "./jobs.scss";
 
 const levelsArray: string[] = [
   "Intern",
