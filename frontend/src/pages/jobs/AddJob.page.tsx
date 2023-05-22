@@ -45,20 +45,18 @@ const AddJob = () => {
   }, []);
 
   const handleClickSaveBtn = () => {
-    /*
-    if (company.name === "" || company.size === "") {
+    if (job.title === "" || job.level === "" || job.companyId === "") {
       alert("Fill all fields");
       return;
     }
     httpModule
-      .post("/Company/Create", company)
-      .then((response) => redirect("/companies"))
+      .post("/Job/Create", job)
+      .then((response) => redirect("/jobs"))
       .catch((error) => console.log(error));
-      */
   };
 
   const handleClickBackBtn = () => {
-    redirect("/companies");
+    redirect("/jobs");
   };
 
   return (
