@@ -5,6 +5,7 @@ import { IJob } from "../../types/global.typing";
 import { Button, CircularProgress } from "@mui/material";
 import { Add } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import JobsGrid from "../../components/jobs/JobsGrid.component";
 // import CompaniesGrid from "../../components/companies/CompaniesGrid.component";
 
 const Jobs = () => {
@@ -40,7 +41,7 @@ const Jobs = () => {
       ) : jobs.length === 0 ? (
         <h1>No Job</h1>
       ) : (
-        <CompaniesGrid data={companies} />
+        <JobsGrid data={jobs} />
       )}
     </div>
   );
