@@ -1,18 +1,28 @@
 import { useState } from "react";
 import { ICreateCompanyDto } from "../../types/global.typing";
 import {
+  Button,
   FormControl,
   InputLabel,
   MenuItem,
   Select,
   TextField,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const AddCompany = () => {
   const [company, setCompany] = useState<ICreateCompanyDto>({
     name: "",
     size: "",
   });
+
+  const redirect = useNavigate();
+
+  const handleClickSaveBtn = () => {};
+  const handleClickBackBtn = () => {
+    redirect("/companies");
+  };
+
   return (
     <div className="content">
       <div className="add-company">
@@ -36,6 +46,22 @@ const AddCompany = () => {
             <MenuItem value="Large">Large</MenuItem>
           </Select>
         </FormControl>
+        <div className="btns">
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={handleClickSaveBtn}
+          >
+            Save
+          </Button>
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={handleClickBackBtn}
+          >
+            Back
+          </Button>
+        </div>
       </div>
     </div>
   );
