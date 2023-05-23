@@ -133,6 +133,7 @@ const AddCandidate = () => {
           onChange={(e) =>
             setCandidate({ ...candidate, coverLetter: e.target.value })
           }
+          multiline
         />
         <input
           type="file"
