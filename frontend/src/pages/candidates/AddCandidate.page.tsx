@@ -61,7 +61,7 @@ const AddCandidate = () => {
     newCandidateFormData.append("pdfFile", pdfFile);
     httpModule
       .post("/Candidate/Create", newCandidateFormData)
-      .then((response) => redirect("/jobs"))
+      .then((response) => redirect("/candidates"))
       .catch((error) => console.log(error));
   };
 
