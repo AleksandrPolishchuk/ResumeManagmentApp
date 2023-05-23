@@ -1,7 +1,7 @@
+import "./companies-grid.scss";
 import { Box } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import moment from "moment";
-import React from "react";
 import { ICompany } from "../../types/global.typing";
 
 const column: GridColDef[] = [

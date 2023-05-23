@@ -1,3 +1,4 @@
+import "./candidates-grid.scss";
 import { Box } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { ICandidate } from "../../types/global.typing";
