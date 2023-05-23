@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ICompany, ICreateCandidateDto, IJob } from "../../types/global.typing";
+import { ICreateCandidateDto, IJob } from "../../types/global.typing";
 import {
   Button,
   FormControl,
