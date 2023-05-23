@@ -37,9 +37,17 @@ const AddCandidate = () => {
         console.log(error);
       });
   }, []);
-  /*
+
   const handleClickSaveBtn = () => {
-    if (job.title === "" || job.level === "" || job.companyId === "") {
+    if (
+      candidate.firstName === "" ||
+      candidate.lastName === "" ||
+      candidate.email === "" ||
+      candidate.phone === "" ||
+      candidate.coverLetter === "" ||
+      candidate.jobId === "" ||
+      !pdfFile
+    ) {
       alert("Fill all fields");
       return;
     }
@@ -47,7 +55,7 @@ const AddCandidate = () => {
       .post("/Job/Create", job)
       .then((response) => redirect("/jobs"))
       .catch((error) => console.log(error));
-  };*/
+  };
 
   const handleClickBackBtn = () => {
     redirect("/candidates");
@@ -124,6 +132,22 @@ const AddCandidate = () => {
             setPdfFile(event.target.files ? event.target.files[0] : null)
           }
         />
+        <div className="btns">
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={handleClickSaveBtn}
+          >
+            Save
+          </Button>
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={handleClickBackBtn}
+          >
+            Back
+          </Button>
+        </div>
       </div>
     </div>
   );
