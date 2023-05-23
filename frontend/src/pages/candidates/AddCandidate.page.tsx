@@ -51,8 +51,16 @@ const AddCandidate = () => {
       alert("Fill all fields");
       return;
     }
+    const newCandidateFormData = new FormData();
+    newCandidateFormData.append("firstName", candidate.firstName);
+    newCandidateFormData.append("lastName", candidate.lastName);
+    newCandidateFormData.append("email", candidate.email);
+    newCandidateFormData.append("phone", candidate.phone);
+    newCandidateFormData.append("coverLetter", candidate.coverLetter);
+    newCandidateFormData.append("jobId", candidate.jobId);
+    newCandidateFormData.append("pdfFile", pdfFile);
     httpModule
-      .post("/Job/Create", job)
+      .post("/Candidate/Create", newCandidateFormData)
       .then((response) => redirect("/jobs"))
       .catch((error) => console.log(error));
   };
