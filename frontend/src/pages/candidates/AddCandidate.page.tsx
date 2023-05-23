@@ -118,6 +118,12 @@ const AddCandidate = () => {
             setCandidate({ ...candidate, coverLetter: e.target.value })
           }
         />
+        <input
+          type="file"
+          onChange={(event) =>
+            setPdfFile(event.target.files ? event.target.files[0] : null)
+          }
+        />
       </div>
     </div>
   );
